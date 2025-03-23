@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const questions = [
         {
             question: "Do you want to go on a trip with me?",
-            options: { "I suppose": ["Sequoia", "San Diego"], "YES!!!": ["Carmel-by-the-Sea","Ojai"] }
+            options: { "I suppose": ["Sequoia", "San Diego"], "YES!!!": ["Carmel-by-the-Sea", "Ojai"] }
         },
         {
             question: "Would you rather relax in nature or a city?",
@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             question: "What is your favorite of these animals?",
-            options: { "Otter": "San Diego", "Deer": "Carmel-by-the-Sea", "Bear": "Sequoia", "Fox": "Ojai" }
+            options: { "Otter": ["San Diego"], "Deer": ["Carmel-by-the-Sea"], "Bear": ["Sequoia"], "Fox": ["Ojai"] }
         },
         {
             question: "What sounds the best?",
-            options: { "Cute town by the beach": "Carmel-by-the-Sea", "Vineyards": "Ojai", "Swimming with otters": "San Diego", "Forest river": "Sequoia" }
+            options: { "Cute town by the beach": ["Carmel-by-the-Sea"], "Vineyards": ["Ojai"], "Swimming with otters": ["San Diego"], "Forest river": ["Sequoia"] }
         }
     ];
 
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <img src="images/${topDestination.toLowerCase().replace(" ", "-")}-1.jpg" alt="${topDestination} 1" class="result-image">
                 <img src="images/${topDestination.toLowerCase().replace(" ", "-")}-2.jpg" alt="${topDestination} 2" class="result-image">
             </div>
-            <p>Nothing is set in stone we can do none or all of them if you would like!</p>
+            <p>Nothing is set in stone; we can do none or all of them if you would like!</p>
         `;
     }
 });
