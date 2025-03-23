@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const destinations = { "Big Sur": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
     let questionIndex = 0;
 
-    // Display the starting screen with confetti animation
+    // Show confetti animation when starting
     function startConfetti() {
         confetti({
             particleCount: 100,
@@ -35,23 +35,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Start the quiz after clicking the button
+    // Show the quiz after clicking the "Start" button
     startButton.addEventListener("click", function () {
         startScreen.style.display = "none";
         quizContainer.style.display = "block";
-        startConfetti();  // Trigger confetti on start screen
+        startConfetti(); // Show confetti when starting the quiz
         displayQuestion();
     });
 
+    // Display the quiz questions and options
     function displayQuestion() {
         if (questionIndex >= questions.length) {
             showResult();
             return;
         }
-        quizContainer.innerHTML = "";
+
         const questionObj = questions[questionIndex];
         const questionEl = document.createElement("h2");
         questionEl.innerText = questionObj.question;
+        quizContainer.innerHTML = ""; // Clear previous question
+
         quizContainer.appendChild(questionEl);
 
         Object.keys(questionObj.options).forEach(option => {
@@ -67,13 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Show the result after the quiz is completed
     function showResult() {
         quizContainer.style.display = "none"; // Hide the quiz
         resultContainer.style.display = "block"; // Show the result
 
+        // Find the destination with the highest score
         const topDestination = Object.keys(destinations).reduce((a, b) => destinations[a] > destinations[b] ? a : b);
-        
-        // Display result with two images
+
+        // Show the result with images of the destination
         resultContainer.innerHTML = `
             <h2>Your perfect getaway is: <span>${topDestination}</span></h2>
             <div class="images-container">
