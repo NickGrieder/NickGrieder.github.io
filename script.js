@@ -7,25 +7,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // Question list
     const questions = [
         {
-            question: "Do you prefer the beach or the mountains?",
-            options: { "Beach": "San Diego", "Mountains": "Big Sur" }
+            question: "Do you want to go on a trip with me?",
+            options: { "I suppose": ["Sequoia", "Carmel-by-the-Sea","Ojai", "San Diego"], "YES!!!": ["Sequoia", "Carmel-by-the-Sea","Ojai", "San Diego"] }
         },
         {
-            question: "Would you rather relax in nature or explore a city?",
-            options: { "Nature": "Sequoia", "City": "Ojai" }
+            question: "Would you rather relax in nature or a city?",
+            options: { "Nature": ["Sequoia", "Carmel-by-the-Sea"], "City": ["Ojai", "San Diego"] }
         },
         {
             question: "What is your favorite of these animals?",
-            options: { "Otter": "San Diego", "Deer": "Big Sur", "Bear": "Sequoia", "Fox": "Ojai" }
+            options: { "Otter": "San Diego", "Deer": "Carmel-by-the-Sea", "Bear": "Sequoia", "Fox": "Ojai" }
         },
         {
-            question: "What biome do you like the most?",
-            options: { "Mountains": "Big Sur", "Vineyards": "Ojai", "Beach": "San Diego", "Forest": "Sequoia" }
+            question: "What sounds the best?",
+            options: { "Cute twon by the beach": "Carmel-by-the-Sea", "Vineyards": "Ojai", "Swimming with otters": "San Diego", "Forest river": "Sequoia" }
         }
     ];
 
     // Destination points to tally
-    const destinations = { "Big Sur": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
+    const destinations = { "Carmel-by-the-Sea": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
     let questionIndex = 0;
 
     // Show confetti animation when starting the quiz
@@ -82,12 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Show the result with images of the destination
         resultContainer.innerHTML = `
-            <h2>Your perfect getaway is: <span>${topDestination}</span></h2>
+            <h2>We are going to: <span>${topDestination}</span></h2>
             <div class="images-container">
                 <img src="images/${topDestination.toLowerCase().replace(" ", "-")}-1.jpg" alt="${topDestination} 1" class="result-image">
                 <img src="images/${topDestination.toLowerCase().replace(" ", "-")}-2.jpg" alt="${topDestination} 2" class="result-image">
             </div>
-            <p>Enjoy your time in ${topDestination}!</p>
+            <p>Nothing is set in stone we can do none or all of them if you would like!</p>
         `;
     }
 });
