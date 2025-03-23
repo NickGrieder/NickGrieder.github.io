@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             question: "What sounds the best?",
-            options: { "Cute twon by the beach": "Carmel-by-the-Sea", "Vineyards": "Ojai", "Swimming with otters": "San Diego", "Forest river": "Sequoia" }
+            options: { "Cute town by the beach": "Carmel-by-the-Sea", "Vineyards": "Ojai", "Swimming with otters": "San Diego", "Forest river": "Sequoia" }
         }
     ];
 
@@ -63,8 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const button = document.createElement("button");
             button.innerText = option;
             button.onclick = () => {
-                const destination = questionObj.options[option];
-                destinations[destination]++;
+                const selectedDestinations = questionObj.options[option];
+                // Assign points to multiple destinations
+                selectedDestinations.forEach(destination => {
+                    destinations[destination]++;
+                });
                 questionIndex++;
                 displayQuestion();
             };
