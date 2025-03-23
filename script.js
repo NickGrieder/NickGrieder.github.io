@@ -20,21 +20,25 @@ document.addEventListener("DOMContentLoaded", function () {
             options: { "Mountains": "Big Sur", "Vineyards": "Ojai", "Beach": "San Diego", "Forest": "Sequoia" }
         }
     ];
-    
+
     const destinations = { "Big Sur": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
     let questionIndex = 0;
-    
+
     function displayQuestion() {
         if (questionIndex >= questions.length) {
             showResult();
             return;
         }
+
+        // Clear any existing content in the quiz container
         quizContainer.innerHTML = "";
+        
         const questionObj = questions[questionIndex];
         const questionEl = document.createElement("h2");
         questionEl.innerText = questionObj.question;
         quizContainer.appendChild(questionEl);
-        
+
+        // Add the options as buttons
         Object.keys(questionObj.options).forEach(option => {
             const button = document.createElement("button");
             button.innerText = option;
@@ -47,13 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
             quizContainer.appendChild(button);
         });
     }
-    
+
     function showResult() {
         quizContainer.style.display = "none";
         const topDestination = Object.keys(destinations).reduce((a, b) => destinations[a] > destinations[b] ? a : b);
         resultContainer.innerText = "Your perfect getaway is: " + topDestination;
         resultContainer.style.display = "block";
     }
-    
+
     displayQuestion();
 });
