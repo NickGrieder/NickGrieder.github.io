@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultContainer = document.getElementById("result");
     const startButton = document.getElementById("start-btn");
 
+    // Question list
     const questions = [
         {
             question: "Do you prefer the beach or the mountains?",
@@ -23,10 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
+    // Destination points to tally
     const destinations = { "Big Sur": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
     let questionIndex = 0;
 
-    // Show confetti animation when starting
+    // Show confetti animation when starting the quiz
     function startConfetti() {
         confetti({
             particleCount: 100,
@@ -35,15 +37,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Show the quiz after clicking the "Start" button
+    // Start the quiz after clicking the "Start" button
     startButton.addEventListener("click", function () {
         startScreen.style.display = "none";
         quizContainer.style.display = "block";
-        startConfetti(); // Show confetti when starting the quiz
+        startConfetti(); // Trigger confetti when starting the quiz
         displayQuestion();
     });
 
-    // Display the quiz questions and options
+    // Display the quiz question and options
     function displayQuestion() {
         if (questionIndex >= questions.length) {
             showResult();
@@ -70,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Show the result after the quiz is completed
+    // Display the result after the quiz is completed
     function showResult() {
         quizContainer.style.display = "none"; // Hide the quiz
         resultContainer.style.display = "block"; // Show the result
