@@ -68,7 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showResult() {
-        quizContainer.style.display = "none";
+        quizContainer.style.display = "none"; // Hide the quiz
+        resultContainer.style.display = "block"; // Show the result
+
         const topDestination = Object.keys(destinations).reduce((a, b) => destinations[a] > destinations[b] ? a : b);
         
         // Display result with two images
@@ -80,6 +82,5 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <p>Enjoy your time in ${topDestination}!</p>
         `;
-        resultContainer.style.display = "block";
     }
 });
