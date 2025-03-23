@@ -70,7 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function showResult() {
         quizContainer.style.display = "none";
         const topDestination = Object.keys(destinations).reduce((a, b) => destinations[a] > destinations[b] ? a : b);
-        resultContainer.innerText = "Your perfect getaway is: " + topDestination;
+        
+        // Display result with two images
+        resultContainer.innerHTML = `
+            <h2>Your perfect getaway is: <span>${topDestination}</span></h2>
+            <div class="images-container">
+                <img src="images/${topDestination.toLowerCase().replace(" ", "-")}-1.jpg" alt="${topDestination} 1" class="result-image">
+                <img src="images/${topDestination.toLowerCase().replace(" ", "-")}-2.jpg" alt="${topDestination} 2" class="result-image">
+            </div>
+            <p>Enjoy your time in ${topDestination}!</p>
+        `;
         resultContainer.style.display = "block";
     }
 });
