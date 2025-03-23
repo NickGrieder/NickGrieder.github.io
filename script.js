@@ -1,40 +1,59 @@
-const destinations = [
-    {
-        name: "Avila Hot Springs",
-        image: "https://www.avilahotsprings.com/image.jpg",  // Replace with actual image link
-        description: "A relaxing retreat with natural hot springs near the beach.",
-        link: "https://www.avilahotsprings.com"
-    },
-    {
-        name: "Paso Robles",
-        image: "https://www.travelpaso.com/image.jpg",  // Replace with actual image link
-        description: "Wine country escape with luxurious hot springs and vineyard views.",
-        link: "https://www.travelpaso.com"
-    }
-];
-
 document.addEventListener("DOMContentLoaded", function () {
-    const destinationsContainer = document.getElementById("destinations");
-
-    destinations.forEach(place => {
-        const card = document.createElement("div");
-        card.className = "destination-card";
-        card.innerHTML = `
-            <img src="${place.image}" alt="${place.name}">
-            <h2>${place.name}</h2>
-            <p>${place.description}</p>
-            <a href="${place.link}" target="_blank">
-                <button>Learn More</button>
-            </a>
-        `;
-        destinationsContainer.appendChild(card);
-    });
-
-    const surpriseButton = document.getElementById("surprise-btn");
-    const surpriseText = document.getElementById("surprise-text");
-
-    surpriseButton.addEventListener("click", function () {
-        surpriseText.innerText = "We’re going to **Avila Hot Springs!** 🏖️💆‍♀️";
-        surpriseText.classList.remove("hidden");
-    });
+    const quizContainer = document.getElementById("quiz");
+    const resultContainer = document.getElementById("result");
+    
+    const questions = [
+        {
+            question: "Do you prefer the beach or the mountains?",
+            options: { "Beach": "San Diego", "Mountains": "Big Sur" }
+        },
+        {
+            question: "Would you rather relax in nature or explore a city?",
+            options: { "Nature": "Sequoia", "City": "Ojai" }
+        },
+        {
+            question: "What is your favorite of these animals?",
+            options: { "Otter": "San Diego", "Deer": "Big Sur", "Bear": "Sequoia", "Fox": "Ojai" }
+        },
+        {
+            question: "What biome do you like the most?",
+            options: { "Mountains": "Big Sur", "Vineyards": "Ojai", "Beach": "San Diego", "Forest": "Sequoia" }
+        }
+    ];
+    
+    const destinations = { "Big Sur": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
+    let questionIndex = 0;
+    
+    function displayQuestion() {
+        if (questionIndex >= questions.length) {
+            showResult();
+            return;
+        }
+        quizContainer.innerHTML = "";
+        const questionObj = questions[questionIndex];
+        const questionEl = document.createElement("h2");
+        questionEl.innerText = questionObj.question;
+        quizContainer.appendChild(questionEl);
+        
+        Object.keys(questionObj.options).forEach(option => {
+            const button = document.createElement("button");
+            button.innerText = option;
+            button.onclick = () => {
+                const destination = questionObj.options[option];
+                destinations[destination]++;
+                questionIndex++;
+                displayQuestion();
+            };
+            quizContainer.appendChild(button);
+        });
+    }
+    
+    function showResult() {
+        quizContainer.style.display = "none";
+        const topDestination = Object.keys(destinations).reduce((a, b) => destinations[a] > destinations[b] ? a : b);
+        resultContainer.innerText = "Your perfect getaway is: " + topDestination;
+        resultContainer.style.display = "block";
+    }
+    
+    displayQuestion();
 });
