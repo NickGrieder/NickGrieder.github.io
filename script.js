@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const quizContainer = document.getElementById("quiz");
+    const startScreen = document.getElementById("start-screen");
+    const quizContainer = document.getElementById("quiz-container");
     const resultContainer = document.getElementById("result");
-    
+    const startButton = document.getElementById("start-btn");
+
     const questions = [
         {
             question: "Do you prefer the beach or the mountains?",
@@ -24,21 +26,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const destinations = { "Big Sur": 0, "Sequoia": 0, "San Diego": 0, "Ojai": 0 };
     let questionIndex = 0;
 
+    // Display the starting screen with confetti animation
+    function startConfetti() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+
+    // Start the quiz after clicking the button
+    startButton.addEventListener("click", function () {
+        startScreen.style.display = "none";
+        quizContainer.style.display = "block";
+        startConfetti();  // Trigger confetti on start screen
+        displayQuestion();
+    });
+
     function displayQuestion() {
         if (questionIndex >= questions.length) {
             showResult();
             return;
         }
-
-        // Clear any existing content in the quiz container
         quizContainer.innerHTML = "";
-        
         const questionObj = questions[questionIndex];
         const questionEl = document.createElement("h2");
         questionEl.innerText = questionObj.question;
         quizContainer.appendChild(questionEl);
 
-        // Add the options as buttons
         Object.keys(questionObj.options).forEach(option => {
             const button = document.createElement("button");
             button.innerText = option;
@@ -58,6 +73,4 @@ document.addEventListener("DOMContentLoaded", function () {
         resultContainer.innerText = "Your perfect getaway is: " + topDestination;
         resultContainer.style.display = "block";
     }
-
-    displayQuestion();
 });

@@ -7,14 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday, My Love! 🎉</h1>
+    <!-- Starting screen -->
+    <div id="start-screen" class="start-screen">
+        <h1>Happy Birthday, Mariam! 🎉</h1>
+        <p>Let's figure out where we're going for a relaxing getaway! 🌴</p>
+        <button id="start-btn">Click here to figure out where we are going</button>
+    </div>
+
+    <!-- Quiz Container (Initially hidden) -->
+    <div id="quiz-container" style="display: none;">
+        <h1>Happy Birthday, Mariam! 🎉</h1>
         <p>Let’s find your perfect getaway! 🌴</p>
         
-        <div id="quiz"></div> <!-- This will show the quiz questions -->
-        <div id="result" style="display: none;"></div> <!-- This will show the result -->
+        <div id="quiz"></div> <!-- Quiz questions will appear here -->
+        <div id="result" style="display: none;"></div> <!-- Result will appear here -->
     </div>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
