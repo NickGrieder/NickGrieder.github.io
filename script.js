@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const questions = [
         {
             question: "Do you want to go on a trip with me?",
-            options: { "I suppose": ["Sequoia", "Carmel-by-the-Sea","Ojai", "San Diego"], "YES!!!": ["Sequoia", "Carmel-by-the-Sea","Ojai", "San Diego"] }
+            options: { "I suppose": ["Sequoia", "San Diego"], "YES!!!": ["Carmel-by-the-Sea","Ojai"] }
         },
         {
             question: "Would you rather relax in nature or a city?",
